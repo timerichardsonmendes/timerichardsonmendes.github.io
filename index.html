@@ -2,10 +2,172 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Time Richardson Mendes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Richardson Mendes - Materiais de Campanha</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #89CFF0 url('fundo.png') no-repeat center center fixed;
+            background-size: cover;
+            padding: 20px 15px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Cabeçalho / Logos */
+        .header-logos {
+            width: 100%;
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-logos img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .logo-topo {
+            max-width: 280px;
+        }
+
+        .logo-principal {
+            max-width: 320px;
+        }
+
+        .subtitulo {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #1a2a40;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Container dos Botões */
+        .buttons-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Botão Efeito Liquid Glass + Animação estilo iOS */
+        .glass-btn {
+            position: relative;
+            width: 100%;
+            padding: 18px 20px;
+            border-radius: 25px;
+            
+            /* Liquid Glass Azul */
+            background: rgba(0, 50, 160, 0.55);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 
+                0 8px 32px 0 rgba(0, 20, 80, 0.37),
+                inset 0 1px 2px 0 rgba(255, 255, 255, 0.4);
+
+            color: #FFFFFF;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: UPPERCASE;
+            letter-spacing: 0.8px;
+            overflow: hidden;
+            cursor: pointer;
+            
+            /* Suavidade estilo iOS */
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                        box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+                        background 0.3s ease;
+        }
+
+        /* Animação de brilho deslizante estilo notificação iOS */
+        .glass-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(
+                90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.4), 
+                transparent
+            );
+            transform: skewX(-20deg);
+            transition: 0.75s ease;
+        }
+
+        /* Efeito de toque / clique estilo iOS */
+        .glass-btn:active {
+            transform: scale(0.96);
+            background: rgba(0, 40, 130, 0.75);
+            box-shadow: 0 4px 15px 0 rgba(0, 20, 80, 0.4);
+        }
+
+        /* Animação de deslizamento continuo para chamar atenção */
+        @keyframes iosSlideShine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        .glass-btn::before {
+            animation: iosSlideShine 4s infinite ease-in-out;
+        }
+
+        .glass-btn:nth-child(2)::before { animation-delay: 1s; }
+        .glass-btn:nth-child(3)::before { animation-delay: 2s; }
+        .glass-btn:nth-child(4)::before { animation-delay: 3s; }
+    </style>
 </head>
 <body>
-    <h1>Site do Time Richardson Mendes</h1>
-    <p>Seu site está oficialmente no ar!</p>
+
+    <div class="container">
+        
+        <!-- Cabeçalho (Espaço para as logomarcas em PNG) -->
+        <div class="header-logos">
+            <!-- Substitua topo.png e logo.png quando me enviar as imagens -->
+            <img src="topo.png" alt="São João dos Patos - Ta Com Ela" class="logo-topo" onerror="this.style.display='none'">
+            <img src="logo.png" alt="Richardson Mendes - Amigo do Povão" class="logo-principal" onerror="this.style.display='none'">
+            
+            <div class="subtitulo">Materiais Oficiais da Campanha</div>
+        </div>
+
+        <!-- Botões com Liquid Glass e Deslize -->
+        <div class="buttons-container">
+            <a href="#" class="glass-btn">MEUS CANDIDATOS</a>
+            <a href="#" class="glass-btn">GRÁFICA</a>
+            <a href="#" class="glass-btn">MÚSICAS DA CAMPANHA</a>
+            <a href="#" class="glass-btn">JINGLES DA CAMPANHA</a>
+        </div>
+
+    </div>
+
 </body>
 </html>
