@@ -2,26 +2,84 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Richardson Mendes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Richardson Mendes 15800 - Materiais de Campanha</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Cabeçalho para as Logomarcas -->
-        <header class="header-logos">
-            <img src="topo.png" alt="São João dos Patos - Ta Com Ela" class="logo-topo" onerror="this.style.display='none'">
-            <img src="logo.png" alt="Richardson Mendes - Amigo do Povão" class="logo-principal" onerror="this.style.display='none'">
-            <p class="subtitulo">MATERIAIS OFICIAIS DA CAMPANHA</p>
+    
+    <div class="app-container" id="draggableContainer">
+        
+        <!-- Cabeçalho com Logos -->
+        <header class="header">
+            <!-- Logo 1: Selo #TOCOM Bruna Pessoa -->
+            <div class="logo-wrapper">
+                <img src="logo-bruna-pessoa.png" alt="#TOCOM Bruna Pessoa 15800" class="logo-img" onerror="this.classList.add('placeholder-error');">
+            </div>
+            
+            <!-- Logo 2: Richardson Mendes -->
+            <div class="logo-wrapper">
+                <img src="logo-richardson.png" alt="Richardson Mendes - Amigo do Povo" class="logo-img" onerror="this.classList.add('placeholder-error');">
+            </div>
+
+            <!-- Subtítulo -->
+            <h2 class="section-title">MATERIAIS OFICIAIS DA CAMPANHA</h2>
         </header>
 
-        <!-- Botões com Animação e Liquid Glass -->
+        <!-- Lista de Botões Glass -->
         <main class="buttons-container">
-            <a href="#" class="glass-btn">MEUS CANDIDATOS</a>
-            <a href="#" class="glass-btn">GRÁFICA</a>
-            <a href="#" class="glass-btn">MUSICAS DA CAMPANHA</a>
-            <a href="#" class="glass-btn">JINGLES DA CAMPANHA</a>
+            
+            <!-- Botão 1 -->
+            <a href="#" class="glass-button">
+                <div class="icon-circle">
+                    <!-- Ícone de Pessoa -->
+                    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+                <div class="divider"></div>
+                <span class="button-text">MEU CANDIDATOS</span>
+                <span class="chevron">&gt;</span>
+            </a>
+
+            <!-- Botão 2 -->
+            <a href="#" class="glass-button">
+                <div class="icon-circle">
+                    <!-- Ícone de Imagem/Gráfica -->
+                    <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                </div>
+                <div class="divider"></div>
+                <span class="button-text">GRÁFICA</span>
+                <span class="chevron">&gt;</span>
+            </a>
+
+            <!-- Botão 3 -->
+            <a href="#" class="glass-button">
+                <div class="icon-circle">
+                    <!-- Ícone de Nota Musical -->
+                    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                </div>
+                <div class="divider"></div>
+                <span class="button-text">MUSICAS DA CAMPANHA</span>
+                <span class="chevron">&gt;</span>
+            </a>
+
+            <!-- Botão 4 -->
+            <a href="#" class="glass-button">
+                <div class="icon-circle">
+                    <!-- Ícone de Play / Vídeo -->
+                    <svg viewBox="0 0 24 24"><path d="M4 6H2v12h2V6zm14 0h-2v12h2V6zM17 6H7v12h10V6zm-2 6l-5 3.5v-7l5 3.5z"/></svg>
+                </div>
+                <div class="divider"></div>
+                <span class="button-text">VÍDEOS DA CAMPANHA</span>
+                <span class="chevron">&gt;</span>
+            </a>
+
         </main>
+
+        <!-- Home Indicator (Barrinha iPhone) -->
+        <footer class="footer">
+            <div class="home-indicator"></div>
+        </footer>
+
     </div>
 
     <script src="script.js"></script>
