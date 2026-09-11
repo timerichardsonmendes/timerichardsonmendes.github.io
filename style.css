@@ -1,5 +1,4 @@
 :root {
-    /* Mude a imagem de fundo aqui */
     --bg-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80');
 }
 
@@ -9,17 +8,19 @@
     padding: 0;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
+    -webkit-user-select: none; /* Correção para iOS */
 }
 
 html, body {
     width: 100%;
+    /* Correção do 100vh para iOS (evita esticar além da barra do Safari) */
     height: 100%;
+    min-height: -webkit-fill-available;
     overflow: hidden;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
     background-color: #1a2a3a;
 }
 
-/* Fundo em Tela Cheia */
 body {
     background-image: var(--bg-image);
     background-size: cover;
@@ -27,30 +28,39 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed; /* Evita que o fundo role no iOS */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 /* Container do App */
 .app-container {
     width: 100%;
     max-width: 420px;
-    height: 100vh;
+    height: 100%;
+    height: -webkit-fill-available; /* Suporte iOS */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 20px;
-    touch-action: none;
+    padding: calc(env(safe-area-inset-top) + 15px) 20px calc(env(safe-area-inset-bottom) + 10px) 20px;
+    
+    /* Permite o pan vertical no iOS sem travar a tela */
+    touch-action: pan-y;
     will-change: transform;
+    position: relative;
+    z-index: 10;
 }
 
-/* Cabeçalho e Logos Temporários */
+/* Cabeçalho */
 .header {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    margin-top: 10px;
 }
 
 .logo-box {
@@ -79,12 +89,12 @@ body {
 
 .section-title {
     color: #0b3c5d;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 900;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.9);
-    margin-top: 6px;
+    margin-top: 4px;
     text-align: center;
 }
 
@@ -94,28 +104,26 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 10px;
 }
 
-/* Botão Glassmorphism */
+/* Botão Glassmorphism corrigido para Safari */
 .glass-button {
     position: relative;
     display: flex;
     align-items: center;
     width: 100%;
-    height: 60px;
+    height: 58px;
     padding: 0 16px;
     border-radius: 35px;
     text-decoration: none;
     color: #ffffff;
     
-    /* Degradê azul e transparência */
-    background: linear-gradient(135deg, rgba(0, 114, 255, 0.5), rgba(0, 40, 150, 0.7));
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(0, 80, 200, 0.55);
+    /* Prefixo obrigatório para o Safari */
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    backdrop-filter: blur(16px) saturate(180%);
     
-    /* Bordas e brilho interno */
-    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    border: 1.5px solid rgba(255, 255, 255, 0.65);
     box-shadow: 
         inset 0 2px 3px rgba(255, 255, 255, 0.6),
         inset 0 -2px 5px rgba(0, 0, 0, 0.4),
@@ -123,20 +131,23 @@ body {
         
     overflow: hidden;
     transition: transform 0.15s ease;
+    
+    /* Evita bugs de renderização 3D no iOS */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 .glass-button:active {
     transform: scale(0.96);
 }
 
-/* Restrição de tamanho dos SVG para não explodirem na tela */
 .icon-circle {
     width: 38px;
     height: 38px;
     min-width: 38px;
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.6);
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
