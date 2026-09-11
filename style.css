@@ -1,8 +1,6 @@
 :root {
-    /* Edite o link da foto de fundo aqui */
+    /* Mude a imagem de fundo aqui */
     --bg-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80');
-    --glass-blue-start: rgba(0, 114, 255, 0.45);
-    --glass-blue-end: rgba(0, 50, 160, 0.65);
 }
 
 * {
@@ -13,12 +11,12 @@
     user-select: none;
 }
 
-body, html {
+html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #1a2a3a;
 }
 
 /* Fundo em Tela Cheia */
@@ -26,77 +24,67 @@ body {
     background-image: var(--bg-image);
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Container App / Tela Mobile */
+/* Container do App */
 .app-container {
     width: 100%;
-    max-width: 430px;
+    max-width: 420px;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 24px;
-    touch-action: none; /* Necessário para os Pointer Events de drag */
+    padding: 20px 20px;
+    touch-action: none;
     will-change: transform;
-    position: relative;
 }
 
-/* Cabeçalho */
+/* Cabeçalho e Logos Temporários */
 .header {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     margin-top: 10px;
 }
 
-.logo-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.logo-img {
-    max-width: 260px;
-    width: 80%;
-    height: auto;
-    object-fit: contain;
-}
-
-/* Estado de placeholder quando a imagem falhar/não existir */
-.logo-img.placeholder-error {
-    min-height: 80px;
-    border: 2px dashed rgba(255, 255, 255, 0.7);
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.3);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.logo-img.placeholder-error::after {
-    content: "Carregar Logo (PNG)";
+.logo-box {
+    background: #0088ff;
     color: #fff;
-    font-size: 13px;
-    font-weight: bold;
-    text-shadow: 0 1px 2px #000;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-weight: 900;
+    font-size: 14px;
+    text-align: center;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.logo-main {
+    background: #003399;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+}
+
+.logo-main small {
+    font-size: 11px;
+    font-weight: normal;
 }
 
 .section-title {
     color: #0b3c5d;
     font-size: 13px;
     font-weight: 900;
-    letter-spacing: 0.8px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
-    text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.8);
-    margin-top: 5px;
+    text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.9);
+    margin-top: 6px;
     text-align: center;
 }
 
@@ -105,132 +93,92 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 10px;
 }
 
-/* Estilo do Botão Liquid Glass */
+/* Botão Glassmorphism */
 .glass-button {
     position: relative;
     display: flex;
     align-items: center;
     width: 100%;
-    height: 62px;
-    padding: 0 18px;
-    border-radius: 40px;
+    height: 60px;
+    padding: 0 16px;
+    border-radius: 35px;
     text-decoration: none;
     color: #ffffff;
     
-    /* Efeito de Vidro Translúcido */
-    background: linear-gradient(135deg, var(--glass-blue-start), var(--glass-blue-end));
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    /* Degradê azul e transparência */
+    background: linear-gradient(135deg, rgba(0, 114, 255, 0.5), rgba(0, 40, 150, 0.7));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     
-    /* Sombras e Bordas Refletivas */
-    border: 1.5px solid rgba(255, 255, 255, 0.65);
+    /* Bordas e brilho interno */
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
     box-shadow: 
-        inset 0 2px 4px rgba(255, 255, 255, 0.6),
-        inset 0 -3px 6px rgba(0, 0, 0, 0.35),
-        0 8px 20px rgba(0, 0, 0, 0.25);
+        inset 0 2px 3px rgba(255, 255, 255, 0.6),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.4),
+        0 6px 15px rgba(0, 0, 0, 0.25);
         
     overflow: hidden;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition: transform 0.15s ease;
 }
 
-/* Brilho Diagonal Reflexivo (Efeito Liquid / Sheen) */
-.glass-button::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -75%;
-    width: 50%;
-    height: 200%;
-    background: linear-gradient(
-        90deg, 
-        rgba(255, 255, 255, 0) 0%, 
-        rgba(255, 255, 255, 0.45) 50%, 
-        rgba(255, 255, 255, 0) 100%
-    );
-    transform: rotate(25deg);
-    pointer-events: none;
-}
-
-/* Animação e Pressão ao Clicar / Toque */
 .glass-button:active {
     transform: scale(0.96);
-    box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.4),
-        inset 0 -1px 3px rgba(0, 0, 0, 0.4),
-        0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.glass-button:active::before {
-    animation: sheen 0.6s ease-out;
-}
-
-@keyframes sheen {
-    0% { left: -75%; }
-    100% { left: 125%; }
-}
-
-/* Ícone em Círculo */
+/* Restrição de tamanho dos SVG para não explodirem na tela */
 .icon-circle {
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     background: rgba(255, 255, 255, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
 }
 
 .icon-circle svg {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     fill: #ffffff;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
-/* Divisor Vertical */
 .divider {
     width: 1px;
-    height: 26px;
-    background: rgba(255, 255, 255, 0.35);
-    margin: 0 14px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.4);
+    margin: 0 12px;
 }
 
-/* Texto do Botão */
 .button-text {
     flex-grow: 1;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 800;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     text-transform: uppercase;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-/* Seta ">" */
-.chevron {
-    font-size: 18px;
-    font-weight: 300;
-    opacity: 0.9;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Rodapé / Home Indicator */
+.chevron {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+/* Home Indicator */
 .footer {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-bottom: 6px;
 }
 
 .home-indicator {
-    width: 135px;
+    width: 130px;
     height: 5px;
     background-color: rgba(255, 255, 255, 0.85);
     border-radius: 3px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
