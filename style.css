@@ -1,287 +1,236 @@
-/* =========================================================
-   RICHARDSON MENDES 15800 — Materiais Oficiais
-   Liquid Glass UI
-   ========================================================= */
-
-:root{
-  /* ---- TROQUE AQUI o link do PNG de fundo do site ---- */
-  --bg-image: url('assets/SUBSTITUA-fundo.png');
-
-  --blue-900: #0a2d6b;
-  --blue-700: #0f4fa8;
-  --blue-500: #1d6fe0;
-  --blue-300: #59a6ff;
-  --cyan-400: #4be3ff;
-  --ink: #0a1f3d;
-  --white: #ffffff;
-
-  --sheet-radius: 28px;
-  --btn-radius: 34px;
+:root {
+    /* Edite o link da foto de fundo aqui */
+    --bg-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80');
+    --glass-blue-start: rgba(0, 114, 255, 0.45);
+    --glass-blue-end: rgba(0, 50, 160, 0.65);
 }
 
-*{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-
-html,body{
-  height:100%;
-  margin:0;
-  overscroll-behavior:none;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
 }
 
-body{
-  font-family:'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  color:var(--ink);
-  min-height:100dvh;
-  display:flex;
-  justify-content:center;
-  overflow:hidden;
-  position:relative;
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #000;
 }
 
-/* ---------------------------------------------------------
-   FUNDO
---------------------------------------------------------- */
-.bg-layer{
-  position:fixed;
-  inset:0;
-  background-image:var(--bg-image);
-  background-size:cover;
-  background-position:center;
-  background-color:#8fc3f0; /* cor de reserva enquanto não há PNG */
-  z-index:-2;
+/* Fundo em Tela Cheia */
+body {
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.bg-shade{
-  position:fixed;
-  inset:0;
-  background:linear-gradient(180deg,
-    rgba(6,20,54,0.05) 0%,
-    rgba(6,20,54,0.05) 45%,
-    rgba(4,14,38,0.35) 100%);
-  z-index:-1;
+/* Container App / Tela Mobile */
+.app-container {
+    width: 100%;
+    max-width: 430px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    touch-action: none; /* Necessário para os Pointer Events de drag */
+    will-change: transform;
+    position: relative;
 }
 
-/* ---------------------------------------------------------
-   TELA (simula viewport de celular)
---------------------------------------------------------- */
-.phone-screen{
-  width:100%;
-  max-width:480px;
-  min-height:100dvh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:env(safe-area-inset-top,28px) 20px 0;
-  position:relative;
+/* Cabeçalho */
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
 }
 
-/* ---------------------------------------------------------
-   CABEÇALHO
---------------------------------------------------------- */
-.header{
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
-  margin-bottom:18px;
+.logo-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
-.logo-selo{
-  width:78%;
-  max-width:340px;
-  height:auto;
-  object-fit:contain;
-  filter:drop-shadow(0 8px 18px rgba(0,20,60,0.35));
+.logo-img {
+    max-width: 260px;
+    width: 80%;
+    height: auto;
+    object-fit: contain;
 }
 
-.logo-nome{
-  width:80%;
-  max-width:360px;
-  height:auto;
-  object-fit:contain;
-  margin-top:6px;
+/* Estado de placeholder quando a imagem falhar/não existir */
+.logo-img.placeholder-error {
+    min-height: 80px;
+    border: 2px dashed rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-img.placeholder-error::after {
+    content: "Carregar Logo (PNG)";
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    text-shadow: 0 1px 2px #000;
 }
 
-.header-subtitle{
-  margin:14px 0 4px;
-  font-size:15px;
-  font-weight:600;
-  letter-spacing:0.3px;
-  color:var(--blue-900);
-  text-shadow:0 1px 2px rgba(255,255,255,0.4);
+.section-title {
+    color: #0b3c5d;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.8);
+    margin-top: 5px;
+    text-align: center;
 }
 
-/* Placeholder visível caso o PNG ainda não tenha sido trocado */
-.img-placeholder{
-  min-height:90px;
-  border:2px dashed rgba(10,45,107,0.45);
-  border-radius:16px;
-  background:rgba(255,255,255,0.25);
-  position:relative;
-}
-.img-placeholder::after{
-  content:"Coloque aqui o link do seu PNG";
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:12px;
-  font-weight:600;
-  color:var(--blue-900);
-  padding:8px;
-  text-align:center;
+/* Lista de Botões */
+.buttons-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 20px;
 }
 
-/* ---------------------------------------------------------
-   PAINEL ARRASTÁVEL (estilo Central de Notificações)
---------------------------------------------------------- */
-.sheet{
-  width:100%;
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding-top:6px;
-  touch-action:pan-y;
-  will-change:transform;
-  transition:transform 0.55s cubic-bezier(0.22,1,0.36,1);
+/* Estilo do Botão Liquid Glass */
+.glass-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 62px;
+    padding: 0 18px;
+    border-radius: 40px;
+    text-decoration: none;
+    color: #ffffff;
+    
+    /* Efeito de Vidro Translúcido */
+    background: linear-gradient(135deg, var(--glass-blue-start), var(--glass-blue-end));
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    
+    /* Sombras e Bordas Refletivas */
+    border: 1.5px solid rgba(255, 255, 255, 0.65);
+    box-shadow: 
+        inset 0 2px 4px rgba(255, 255, 255, 0.6),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.35),
+        0 8px 20px rgba(0, 0, 0, 0.25);
+        
+    overflow: hidden;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.sheet.dragging{ transition:none; }
-
-.sheet-handle{
-  width:42px;
-  height:5px;
-  border-radius:3px;
-  background:rgba(255,255,255,0.65);
-  box-shadow:0 1px 3px rgba(0,0,0,0.25);
-  margin-bottom:16px;
+/* Brilho Diagonal Reflexivo (Efeito Liquid / Sheen) */
+.glass-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -75%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(
+        90deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.45) 50%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(25deg);
+    pointer-events: none;
 }
 
-.menu-list{
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  gap:22px;
-  padding-bottom:30px;
+/* Animação e Pressão ao Clicar / Toque */
+.glass-button:active {
+    transform: scale(0.96);
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.4),
+        inset 0 -1px 3px rgba(0, 0, 0, 0.4),
+        0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* ---------------------------------------------------------
-   BOTÕES — LIQUID GLASS
---------------------------------------------------------- */
-.glass-btn{
-  --glass-tilt: 0deg;
-  position:relative;
-  display:flex;
-  align-items:center;
-  gap:16px;
-  width:100%;
-  min-height:72px;
-  padding:0 22px;
-  border-radius:var(--btn-radius);
-  text-decoration:none;
-  color:var(--white);
-  overflow:hidden;
-  isolation:isolate;
-
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0) 60%),
-    linear-gradient(160deg, rgba(60,130,230,0.55) 0%, rgba(20,80,180,0.55) 55%, rgba(10,50,130,0.65) 100%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  backdrop-filter: blur(18px) saturate(160%);
-  border:1.5px solid rgba(255,255,255,0.55);
-  box-shadow:
-    0 10px 24px rgba(3,20,60,0.35),
-    inset 0 1px 1px rgba(255,255,255,0.7),
-    inset 0 -14px 20px -14px rgba(0,30,90,0.5);
-
-  transform:translateZ(0) scale(1);
-  transition:transform 0.18s cubic-bezier(0.22,1,0.36,1), box-shadow 0.18s ease;
+.glass-button:active::before {
+    animation: sheen 0.6s ease-out;
 }
 
-.glass-btn:active{
-  transform:scale(0.972);
-  box-shadow:
-    0 4px 12px rgba(3,20,60,0.3),
-    inset 0 1px 1px rgba(255,255,255,0.6),
-    inset 0 -10px 16px -10px rgba(0,30,90,0.55);
+@keyframes sheen {
+    0% { left: -75%; }
+    100% { left: 125%; }
 }
 
-/* brilho diagonal que "escorre" no toque, como vidro líquido */
-.glass-btn__sheen{
-  position:absolute;
-  top:-60%;
-  left:-30%;
-  width:60%;
-  height:220%;
-  background:linear-gradient(115deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.55) 45%, rgba(255,255,255,0) 60%);
-  transform:translateX(-120%) rotate(8deg);
-  pointer-events:none;
+/* Ícone em Círculo */
+.icon-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
-.glass-btn.animate-sheen .glass-btn__sheen{
-  animation:sheenSweep 0.75s ease;
+.icon-circle svg {
+    width: 22px;
+    height: 22px;
+    fill: #ffffff;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
-@keyframes sheenSweep{
-  to{ transform:translateX(260%) rotate(8deg); }
+/* Divisor Vertical */
+.divider {
+    width: 1px;
+    height: 26px;
+    background: rgba(255, 255, 255, 0.35);
+    margin: 0 14px;
 }
 
-.glass-btn__icon{
-  flex:none;
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:radial-gradient(circle at 32% 28%, rgba(255,255,255,0.55), rgba(255,255,255,0.05) 60%);
-  border:1px solid rgba(255,255,255,0.55);
-  color:var(--white);
-}
-.glass-btn__icon svg{ width:22px; height:22px; }
-
-.glass-btn__divider{
-  width:1px;
-  align-self:stretch;
-  margin:10px 0;
-  background:rgba(255,255,255,0.4);
+/* Texto do Botão */
+.button-text {
+    flex-grow: 1;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.glass-btn__label{
-  flex:1;
-  font-size:16px;
-  font-weight:700;
-  letter-spacing:0.3px;
-  text-shadow:0 1px 3px rgba(0,20,60,0.35);
+/* Seta ">" */
+.chevron {
+    font-size: 18px;
+    font-weight: 300;
+    opacity: 0.9;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.glass-btn__chevron{
-  flex:none;
-  color:rgba(255,255,255,0.9);
-}
-.glass-btn__chevron svg{ width:20px; height:20px; }
-
-/* ---------------------------------------------------------
-   HOME INDICATOR (barrinha estilo iPhone)
---------------------------------------------------------- */
-.home-indicator{
-  width:134px;
-  height:5px;
-  border-radius:3px;
-  background:rgba(255,255,255,0.55);
-  margin:10px auto calc(10px + env(safe-area-inset-bottom,0px));
+/* Rodapé / Home Indicator */
+.footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 6px;
 }
 
-/* ---------------------------------------------------------
-   RESPONSIVO
---------------------------------------------------------- */
-@media (max-width:340px){
-  .glass-btn__label{ font-size:14.5px; }
-  .glass-btn{ min-height:66px; padding:0 16px; gap:12px; }
-}
-
-@media (prefers-reduced-motion: reduce){
-  .sheet, .glass-btn, .glass-btn__sheen{ transition:none !important; animation:none !important; }
+.home-indicator {
+    width: 135px;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
