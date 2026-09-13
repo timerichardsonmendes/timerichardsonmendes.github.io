@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richardson Mendes - Materiais Oficiais da Campanha</title>
+    <!-- Font Awesome para os ícones -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-blue: #0d5cbe;
+            --brand-cyan: #52c4db;
+            --brand-yellow: #fcd116;
+            --text-dark: #111111;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Container centralizado estilo celular */
+        .mobile-container {
+            width: 100%;
+            max-width: 420px;
+            min-height: 100vh;
+            background-color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        /* ----- ANIMAÇÕES BÁSICAS ----- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shine {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        /* Animação do Reflexo ao passar o mouse/dedo */
+        @keyframes passLight {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+
+        /* Seção Superior Branca */
+        .top-section {
+            background-color: #ffffff;
+            padding: 30px 20px 15px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        /* Envelopes das imagens para o efeito de reflexo */
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        /* Configurações específicas de tamanho */
+        .main-wrapper {
+            width: 85%;
+            max-width: 270px;
+            animation: fadeInDown 0.9s ease-out;
+        }
+        
+        .logo-wrapper {
+            width: 75%;
+            max-width: 230px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        /* A luz que vai passar (brilho branco) */
+        .img-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+            transform: skewX(-25deg);
+        }
+
+        /* Disparo do efeito de luz (Hover no PC, Active no Celular) */
+        .img-wrapper:hover::after, .img-wrapper:active::after {
+            animation: passLight 0.7s ease-out forwards;
+        }
+
+        /* Imagens base */
+        .main-badge-img, .logo-richardson-img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.2s ease-out;
+        }
+
+        .main-badge-img {
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+        }
+
+        /* Leve zoom ao tocar nas imagens */
+        .img-wrapper:hover .main-badge-img, .img-wrapper:active .main-badge-img,
+        .img-wrapper:hover .logo-richardson-img, .img-wrapper:active .logo-richardson-img {
+            transform: scale(1.03);
+        }
+
+        .section-title {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+            text-transform: uppercase;
+            animation: fadeInDown 1.1s ease-out;
+        }
+
+        /* Seção Inferior Ciano */
+        .bottom-section {
+            background-color: var(--brand-cyan);
+            padding: 25px 20px 35px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+            animation: fadeInUp 0.9s ease-out;
+        }
+
+        /* 3 Botões de Acesso */
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            width: 100%;
+        }
+
+        .nav-card {
+            background-color: var(--brand-blue);
+            color: white;
+            border-radius: 16px;
+            padding: 18px 8px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            height: 115px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 150%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            animation: shine 2s infinite linear;
+            animation-delay: 1s;
+        }
+
+        .nav-card:nth-child(1) { animation-delay: 0.2s; }
+        .nav-card:nth-child(2) { animation-delay: 0.4s; }
+        .nav-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .nav-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+        }
+
+        .nav-card i {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .nav-card span {
+            font-size: 0.6rem;
+            font-weight: 700;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        /* Caixa de Redes Sociais */
+        .social-box {
+            background-color: var(--brand-blue);
+            width: 100%;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .social-title {
+            color: var(--brand-yellow);
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            text-decoration: none;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .social-item:hover {
+            opacity: 0.8;
+        }
+
+        .social-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .social-item i {
+            font-size: 24px;
+            color: var(--brand-yellow);
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Botão do WhatsApp */
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25d366, #1ebe5d);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            animation: fadeInUp 1.4s ease-out;
+            transition: transform 0.2s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .whatsapp-btn i {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        
+        <!-- SEÇÃO SUPERIOR -->
+        <div class="top-section">
+            
+            <!-- 1. Selo principal com o container do efeito -->
+            <div class="img-wrapper main-wrapper">
+                <img src="TIMERICHARDSONMENDES.png" alt="Time Richardson Mendes" class="main-badge-img">
+            </div>
+            
+            <!-- 2. Logomarca Richardson Mendes com o container do efeito -->
+            <div class="img-wrapper logo-wrapper">
+                <img src="LOGORICHARDSONMENDES.png" alt="Richardson Mendes" class="logo-richardson-img">
+            </div>
+
+            <div class="section-title">MATERIAIS OFICIAIS DA CAMPANHA</div>
+            
+        </div>
+
+        <!-- SEÇÃO INFERIOR -->
+        <div class="bottom-section">
+            
+            <!-- 3 BOTÕES -->
+            <div class="buttons-grid">
+                <a href="#" class="nav-card">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span>MEU CANDIDATOS</span>
+                </a>
+                <a href="#" class="nav-card">
+                    <i class="fa-solid fa-print"></i>
+                    <span>GRAFICAS</span>
+                </a>
+                <a href="#" class="nav-card">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>CARDS DE APOIO</span>
+                </a>
+            </div>
+
+            <!-- REDES SOCIAIS -->
+            <div class="social-box">
+                <div class="social-title">Rede Sociais</div>
+                
+                <a href="https://www.instagram.com/richardson__mendes" target="_blank" class="social-item">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span>richardson__mendes</span>
+                </a>
+                
+                <a href="https://www.facebook.com/profile.php?id=100009285597049" target="_blank" class="social-item">
+                    <i class="fa-brands fa-facebook"></i>
+                    <span>Richardson Mendes</span>
+                </a>
+            </div>
+
+            <!-- BOTÃO CANAL NO WHATSAPP -->
+            <a href="https://wa.me/5599984573001" target="_blank" class="whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                Canal no WhatsApp
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
