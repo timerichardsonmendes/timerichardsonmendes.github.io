@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Richardson Mendes - Materiais de Campanha</title>
+    <title>Richardson Mendes - Materiais Oficiais da Campanha</title>
     <!-- Font Awesome para os ícones -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts para a tipografia -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --brand-yellow: #fcf003;
-            --brand-blue: #2c599d; /* Tom de azul original recuperado */
+            --brand-blue: #0d5cbe;
+            --brand-cyan: #52c4db;
+            --brand-yellow: #fcd116;
             --text-dark: #111111;
-            --text-light: #ffffff;
-            --nav-gray: #f5f5f5;
         }
 
         * {
@@ -26,7 +25,7 @@
         }
 
         body {
-            background-color: #333;
+            background-color: #222;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -37,208 +36,167 @@
         .mobile-container {
             width: 100%;
             max-width: 414px;
-            height: 100vh;
-            max-height: 896px;
-            background-color: #fff;
+            background-color: #ffffff;
             position: relative;
             display: flex;
             flex-direction: column;
             overflow: hidden;
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            border-radius: 35px;
+            border: 8px solid #333;
         }
 
-        /* ----- HEADER ----- */
-        header {
-            display: flex;
-            height: 70px;
-            background-color: #fff;
-            z-index: 10;
-            align-items: center;
-        }
-
-        .logo {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            padding-left: 15px;
-            padding-right: 5px;
-            font-size: 13px; /* Reduzido para encaixar perfeitamente */
-            font-weight: 900;
-            color: var(--text-dark);
-            letter-spacing: 0px;
-            line-height: 1.2;
-            word-break: break-word;
-        }
-
-        .header-actions {
-            display: flex;
-            flex-shrink: 0;
-        }
-
-        .user-btn {
-            width: 60px;
-            height: 70px;
-            background-color: var(--nav-gray);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: none;
-            cursor: pointer;
-        }
-
-        .user-btn i {
-            font-size: 22px;
-            color: #555;
-            font-weight: 300;
-        }
-
-        .menu-btn {
-            width: 60px;
-            height: 70px;
-            background-color: var(--brand-yellow);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: none;
-            cursor: pointer;
-        }
-
-        .menu-btn i {
-            font-size: 26px;
-            color: var(--text-dark);
-        }
-
-        /* ----- MAIN HERO SECTION ----- */
-        .hero {
-            flex: 1;
-            position: relative;
-            background-image: url('https://images.unsplash.com/photo-1548678967-f1aca5e9ff0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
-            background-size: cover;
-            background-position: center;
+        /* Seção Superior Branca */
+        .top-section {
+            background-color: #ffffff;
+            padding: 25px 20px 15px 20px;
+            text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px 25px;
+            align-items: center;
+            gap: 20px;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.85) 100%);
-            z-index: 1;
+        /* Logomarcas (Substituir o 'src' pelas suas imagens) */
+        .logo-time {
+            width: 85%;
+            max-width: 280px;
+            height: auto;
+            object-fit: contain;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            margin-bottom: 20px;
+        .logo-name {
+            width: 75%;
+            max-width: 240px;
+            height: auto;
+            object-fit: contain;
         }
 
-        .hero-content h1 {
-            color: var(--brand-yellow);
-            font-size: 26px;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-            word-wrap: break-word;
-        }
-
-        .hero-content h2 {
-            color: var(--text-light);
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 20px;
+        .section-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--text-dark);
             letter-spacing: 0.5px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
         }
 
-        .hero-content p {
-            color: #dcdcdc;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            max-width: 95%;
-        }
-
-        /* Tracinhos indicadores (Slider Indicators) */
-        .slider-indicators {
-            display: flex;
-            gap: 8px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .slider-line {
-            width: 18px;
-            height: 3px;
-            background-color: rgba(255, 255, 255, 0.4);
-        }
-
-        .slider-line.active {
-            background-color: var(--brand-yellow);
-        }
-
-        /* ----- BOTTOM NAVIGATION ----- */
-        .bottom-nav {
-            height: 100px;
-            background-color: var(--brand-yellow);
+        /* Seção Inferior Ciano */
+        .bottom-section {
+            background-color: var(--brand-cyan);
+            padding: 20px 20px 30px 20px;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+        }
+
+        /* 3 Botões de Acesso (Ícone em cima, texto em baixo) */
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 100%;
+        }
+
+        .nav-card {
+            background-color: var(--brand-blue);
+            color: white;
+            border-radius: 16px;
+            padding: 18px 8px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            height: 110px;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .nav-card i {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .nav-card span {
+            font-size: 0.65rem;
+            font-weight: 700;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        /* Caixa de Redes Sociais */
+        .social-box {
+            background-color: var(--brand-blue);
+            width: 100%;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .social-title {
+            color: var(--brand-yellow);
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            text-decoration: none;
+            color: white;
+            font-size: 0.9rem;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .social-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .social-item i {
+            font-size: 24px;
+            color: var(--brand-yellow);
+            width: 24px;
+            text-align: center;
+            font-style: normal;
+        }
+
+        /* Botão do WhatsApp */
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25d366, #1ebe5d);
+            color: white;
+            width: 100%;
+            padding: 14px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: flex;
             justify-content: center;
             align-items: center;
-            padding: 10px 20px;
-            z-index: 10;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
         }
 
-        .nav-icons {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 0 10px;
-            margin-bottom: 15px;
-            margin-top: 5px;
+        .whatsapp-btn:hover {
+            transform: scale(1.02);
         }
 
-        .nav-icons a {
-            color: #ffffff; /* Ícones em Branco */
+        .whatsapp-btn i {
             font-size: 24px;
-            text-decoration: none;
-            transition: transform 0.2s, color 0.2s;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.3); /* Leve sombra para destacar no amarelo */
-        }
-        
-        .nav-icons a:hover {
-            transform: scale(1.1);
-            color: var(--text-dark);
-        }
-
-        /* Pontinhos inferiores do menu */
-        .nav-dots {
-            display: flex;
-            gap: 5px;
-        }
-
-        .nav-dot {
-            width: 4px;
-            height: 4px;
-            background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 50%;
-        }
-
-        .nav-dot.active {
-            background-color: #000;
-        }
-
-        @media (max-width: 414px) {
-            .mobile-container {
-                height: 100vh;
-                max-height: none;
-                box-shadow: none;
-            }
         }
     </style>
 </head>
@@ -246,50 +204,58 @@
 
     <div class="mobile-container">
         
-        <!-- HEADER -->
-        <header>
-            <div class="logo">RICHARDSON MENDES</div>
-            <div class="header-actions">
-                <button class="user-btn">
-                    <i class="fa-regular fa-user"></i>
-                </button>
-                <button class="menu-btn">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-            </div>
-        </header>
-
-        <!-- MAIN CONTENT (HERO) -->
-        <main class="hero">
-            <div class="hero-content">
-                <h1>#TIMERICHARDSONMENDES</h1>
-                <h2>MATERIAIS DE CAMPANHA</h2>
-                <p>Tenha acesso aos nossos materiais, compartilhe e ajude a levar nossa mensagem cada vez mais longe.<br><br>Acesse, baixe e compartilhe.</p>
-            </div>
+        <!-- SEÇÃO SUPERIOR -->
+        <div class="top-section">
+            <!-- Insira o link/arquivo da logo Timerichardsonmendes no src abaixo -->
+            <img src="logo-timerichardsonmendes.png" alt="Time Richardson Mendes" class="logo-time">
             
-            <div class="slider-indicators">
-                <div class="slider-line active"></div>
-                <div class="slider-line"></div>
-                <div class="slider-line"></div>
-            </div>
-        </main>
+            <!-- Insira o link/arquivo da logo Richardson Mendes no src abaixo -->
+            <img src="logo-richardsonmendes.png" alt="Richardson Mendes Amigo do Povão" class="logo-name">
 
-        <!-- BOTTOM NAVIGATION -->
-        <nav class="bottom-nav">
-            <div class="nav-icons">
-                <a href="#"><i class="fa-solid fa-user-group"></i></a>
-                <a href="#"><i class="fa-solid fa-store"></i></a>
-                <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-                <a href="#"><i class="fa-regular fa-comment"></i></a>
-                <a href="#"><i class="fa-solid fa-phone"></i></a>
-            </div>
+            <div class="section-title">MATERIAIS OFICIAIS DA CAMPANHA</div>
+        </div>
+
+        <!-- SEÇÃO INFERIOR -->
+        <div class="bottom-section">
             
-            <div class="nav-dots">
-                <div class="nav-dot active"></div>
-                <div class="nav-dot"></div>
-                <div class="nav-dot"></div>
+            <!-- 3 BOTÕES (Ícone em cima, texto em baixo) -->
+            <div class="buttons-grid">
+                <a href="#" class="nav-card">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span>MEU CANDIDATOS</span>
+                </a>
+                <a href="#" class="nav-card">
+                    <i class="fa-solid fa-print"></i>
+                    <span>GRAFICAS</span>
+                </a>
+                <a href="#" class="nav-card">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>CARDS DE APOIO</span>
+                </a>
             </div>
-        </nav>
+
+            <!-- REDES SOCIAIS -->
+            <div class="social-box">
+                <div class="social-title">Rede Sociais</div>
+                
+                <a href="https://instagram.com/richardson__mendes" target="_blank" class="social-item">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span>richardson__mendes</span>
+                </a>
+                
+                <a href="https://facebook.com/richardsonmendes" target="_blank" class="social-item">
+                    <i class="fa-brands fa-facebook"></i>
+                    <span>richardsonmendes</span>
+                </a>
+            </div>
+
+            <!-- BOTÃO CANAL NO WHATSAPP -->
+            <a href="#" target="_blank" class="whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                Canal no WhatsApp
+            </a>
+
+        </div>
 
     </div>
 
