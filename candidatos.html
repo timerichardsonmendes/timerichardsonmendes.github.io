@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Bruna Pessoa 15800 - Meus Candidatos</title>
+    <title>Meus Candidatos</title>
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts Montserrat -->
@@ -11,10 +11,18 @@
     
     <style>
         :root {
+            /* Cores Bruna */
             --purple-bg: #590089;
             --pink-stripe: #e3127d;
             --purple-number: #5200a4;
             --pink-title: #e3127d;
+
+            /* Cores Erlanio */
+            --blue-bg: #0045ad;
+            --red-stripe: #e3121b;
+            --blue-number: #0045ad;
+            --red-title: #e3121b;
+
             --text-dark: #333333;
         }
 
@@ -35,7 +43,7 @@
             overflow: hidden;
         }
 
-        /* Container Principal do Celular */
+        /* Moldura de Celular */
         .mobile-container {
             width: 100%;
             max-width: 414px;
@@ -49,15 +57,15 @@
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
 
-        /* Botão de voltar */
+        /* Botão de voltar (Topo esquerdo) */
         .back-btn {
             position: absolute;
             top: 16px;
             left: 16px;
-            z-index: 40;
+            z-index: 50;
             width: 38px;
             height: 38px;
-            background-color: rgba(255, 255, 255, 0.25);
+            background-color: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(5px);
             color: white;
             border-radius: 50%;
@@ -71,32 +79,11 @@
         }
 
         .back-btn:hover, .back-btn:active {
-            background-color: rgba(255, 255, 255, 0.45);
+            background-color: rgba(255, 255, 255, 0.5);
             transform: scale(1.08);
         }
 
-        /* Faixas Roxa e Rosa na Esquerda */
-        .left-purple-bar {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            width: 31%;
-            background-color: var(--purple-bg);
-            z-index: 1;
-        }
-
-        .left-pink-bar {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 31%;
-            width: 4.5%;
-            background-color: var(--pink-stripe);
-            z-index: 1;
-        }
-
-        /* Container dos Cards (Carrossel Sliders) */
+        /* Container do Carrossel (Slides Wrapper) */
         .slides-wrapper {
             display: flex;
             width: 100%;
@@ -110,9 +97,30 @@
             height: 100%;
             position: relative;
             flex-shrink: 0;
+            overflow: hidden;
         }
 
-        /* FOTO BRUNA */
+        /* --- ESTILOS DO SLIDE 1: BRUNA PESSOA --- */
+        .bruna-purple-bar {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 31%;
+            background-color: var(--purple-bg);
+            z-index: 1;
+        }
+
+        .bruna-pink-bar {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 31%;
+            width: 4.5%;
+            background-color: var(--pink-stripe);
+            z-index: 1;
+        }
+
         .photo-bruna {
             position: absolute;
             bottom: 0;
@@ -125,8 +133,7 @@
             pointer-events: none;
         }
 
-        /* CONTEÚDO DIREITO (CARD 1) */
-        .right-content {
+        .bruna-right-content {
             position: absolute;
             top: 18%;
             left: 46%;
@@ -137,6 +144,51 @@
             align-items: flex-start;
         }
 
+        /* --- ESTILOS DO SLIDE 2: ERLANIO XAVIER --- */
+        .erlanio-blue-bar {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 30%;
+            background-color: var(--blue-bg);
+            z-index: 1;
+        }
+
+        .erlanio-red-bar {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 30%;
+            width: 4.5%;
+            background-color: var(--red-stripe);
+            z-index: 1;
+        }
+
+        .photo-erlanio {
+            position: absolute;
+            bottom: 0;
+            right: -6%;
+            width: 82%;
+            height: 82%;
+            object-fit: contain;
+            object-position: bottom right;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .erlanio-left-content {
+            position: absolute;
+            top: 18%;
+            left: 7%;
+            width: 58%;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        /* --- BIO E TEXTOS GENÉRICOS --- */
         .bio-list {
             font-size: 0.88rem;
             line-height: 1.4;
@@ -145,7 +197,7 @@
             margin-bottom: 22px;
         }
 
-        .candidate-name {
+        .candidate-name-bruna {
             font-size: 1.6rem;
             font-weight: 900;
             color: var(--pink-title);
@@ -153,7 +205,7 @@
             margin-bottom: 2px;
         }
 
-        .candidate-number {
+        .candidate-number-bruna {
             font-size: 3.8rem;
             font-weight: 900;
             color: var(--purple-number);
@@ -162,6 +214,24 @@
             margin-bottom: 12px;
         }
 
+        .candidate-name-erlanio {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--red-title);
+            line-height: 1.1;
+            margin-bottom: 2px;
+        }
+
+        .candidate-number-erlanio {
+            font-size: 3.8rem;
+            font-weight: 900;
+            color: var(--blue-number);
+            line-height: 0.95;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        /* SELO INSTAGRAM */
         .insta-pill {
             display: inline-flex;
             align-items: center;
@@ -173,7 +243,6 @@
             color: #333333;
             font-size: 0.78rem;
             font-weight: 700;
-            margin-left: 35px;
             margin-bottom: 24px;
             transition: transform 0.2s, background-color 0.2s;
         }
@@ -188,7 +257,7 @@
             font-size: 0.82rem;
         }
 
-        /* ÍCONE NOVO DE ARRASTE PRO LADO COM ANIMAÇÃO */
+        /* BOTÃO DE ARRASTAR PRO LADO */
         .swipe-icon-btn {
             align-self: flex-end;
             margin-right: 10px;
@@ -204,39 +273,12 @@
             50% { transform: translateX(8px); }
         }
 
-        /* CARD 2 (SEGUNDA TELA AO ARRASTAR) */
-        .card-2-content {
-            position: absolute;
-            top: 20%;
-            left: 40%;
-            right: 20px;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .card-2-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--purple-bg);
-        }
-
-        .card-2-box {
-            background-color: #f5f0f9;
-            padding: 15px;
-            border-radius: 12px;
-            border-left: 4px solid var(--pink-stripe);
-            font-size: 0.85rem;
-            color: #444;
-            line-height: 1.4;
-        }
-
-        /* Indicador de Páginas (Bolinhas no rodapé) */
+        /* INDICADOR DE PÁGINAS (BOLINHAS) */
         .dots-container {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 30;
             display: flex;
             gap: 8px;
@@ -262,25 +304,22 @@
 
     <div class="mobile-container" id="swipeArea">
         
-        <!-- BOTÃO DE VOLTAR -->
-        <a href="index.html" class="back-btn" title="Voltar">
+        <!-- BOTÃO DE VOLTAR FIXO -->
+        <a href="index.html" class="back-btn" title="Voltar para a home">
             <i class="fa-solid fa-arrow-left"></i>
         </a>
 
-        <!-- FAIXAS LATERAIS FIXAS -->
-        <div class="left-purple-bar"></div>
-        <div class="left-pink-bar"></div>
-
-        <!-- FOTO DA BRUNA -->
-        <img src="FOTOBRUNAPESSOA.png" alt="Bruna Pessoa" class="photo-bruna">
-
-        <!-- CARROSSEL DE CARDS (SLIDES) -->
+        <!-- CARROSSEL DE CARDS -->
         <div class="slides-wrapper" id="slidesWrapper">
             
-            <!-- CARD 1: INICIAL -->
+            <!-- SLIDE 1: BRUNA PESSOA -->
             <div class="slide-card">
-                <div class="right-content">
-                    
+                <div class="bruna-purple-bar"></div>
+                <div class="bruna-pink-bar"></div>
+
+                <img src="FOTOBRUNAPESSOA.png" alt="Bruna Pessoa" class="photo-bruna">
+
+                <div class="bruna-right-content">
                     <div class="bio-list">
                         Oi, minha gente<br>
                         Candidata a deputada<br>
@@ -291,53 +330,60 @@
                         Empreendedora
                     </div>
 
-                    <div class="candidate-name">Bruna Pessoa</div>
-                    <div class="candidate-number">15800</div>
+                    <div class="candidate-name-bruna">Bruna Pessoa</div>
+                    <div class="candidate-number-bruna">15800</div>
 
-                    <a href="https://www.instagram.com/brunapessoama/" target="_blank" class="insta-pill">
+                    <a href="https://www.instagram.com/brunapessoama/" target="_blank" class="insta-pill" style="margin-left: 35px;">
                         <span>brunapessoama</span>
                         <i class="fa-solid fa-circle-check verified-icon"></i>
                     </a>
 
-                    <!-- NOVO ÍCONE DA MÃOZINHA (LIMPO E PROPORCIONAL) -->
+                    <!-- ÍCONE DE ARRASTAR -->
                     <button class="swipe-icon-btn" onclick="nextSlide()" title="Arraste para o lado">
-                        <svg width="70" height="70" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Pílula Superior -->
-                            <rect x="42" y="10" width="50" height="24" rx="12" stroke="#e3127d" stroke-width="5" fill="none" stroke-linecap="round"/>
-                            
-                            <!-- Seta dentro da Pílula -->
+                        <svg width="65" height="65" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="42" y="10" width="50" height="24" rx="12" stroke="#e3127d" stroke-width="5" fill="none"/>
                             <path d="M 56 22 L 76 22 M 70 16 L 76 22 L 70 28" stroke="#e3127d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                            
-                            <!-- Dedo Indicador Estendido -->
                             <path d="M 52 50 V 28" stroke="#e3127d" stroke-width="5" stroke-linecap="round"/>
-                            
-                            <!-- Mão Dobrada e Palma da Mão -->
                             <path d="M 52 48 C 52 42 64 42 64 48 V 56 M 64 50 C 64 45 74 45 74 50 V 62 C 74 76 64 86 50 86 C 36 86 30 76 30 68 C 30 60 38 56 46 56 H 52" stroke="#e3127d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
-
                 </div>
             </div>
 
-            <!-- CARD 2: PROPOSTAS E AÇÕES -->
+            <!-- SLIDE 2: ERLANIO XAVIER -->
             <div class="slide-card">
-                <div class="card-2-content">
-                    <div class="card-2-title">Propostas & Ações</div>
-                    
-                    <div class="card-2-box">
-                        <strong>Defesa da Família</strong><br>
-                        Projetos voltados para o fortalecimento das famílias e apoio às mães empreendedoras.
+                <div class="erlanio-blue-bar"></div>
+                <div class="erlanio-red-bar"></div>
+
+                <img src="FOTOOFICIALERLANIO.png" alt="Erlanio Xavier" class="photo-erlanio">
+
+                <div class="erlanio-left-content">
+                    <div class="bio-list">
+                        Sou Erlanio Xavier<br>
+                        Seu deputado Federal<br>
+                        Ex-Prefeito de Igarapé Grande<br>
+                        Ex-Presidente da FAMEM<br>
+                        Trabalhando pelos<br>
+                        municípios maranhenses
                     </div>
 
-                    <div class="card-2-box">
-                        <strong>Desenvolvimento Regional</strong><br>
-                        Incentivo ao empreendedorismo local e inovação para o Estado do Maranhão.
-                    </div>
+                    <div class="candidate-name-erlanio">Erlanio Xavier</div>
+                    <div class="candidate-number-erlanio">1234</div>
 
-                    <a href="https://www.instagram.com/brunapessoama/" target="_blank" class="insta-pill" style="margin-left: 0;">
-                        <span>Ver no Instagram</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <a href="https://www.instagram.com/erlanioxavier/" target="_blank" class="insta-pill">
+                        <span>erlanioxavier</span>
+                        <i class="fa-solid fa-circle-check verified-icon"></i>
                     </a>
+
+                    <!-- ÍCONE DE ARRASTAR -->
+                    <button class="swipe-icon-btn" onclick="nextSlide()" title="Arraste para o lado" style="align-self: flex-start; margin-left: 20px;">
+                        <svg width="65" height="65" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="42" y="10" width="50" height="24" rx="12" stroke="#e3121b" stroke-width="5" fill="none"/>
+                            <path d="M 56 22 L 76 22 M 70 16 L 76 22 L 70 28" stroke="#e3121b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M 52 50 V 28" stroke="#e3121b" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M 52 48 C 52 42 64 42 64 48 V 56 M 64 50 C 64 45 74 45 74 50 V 62 C 74 76 64 86 50 86 C 36 86 30 76 30 68 C 30 60 38 56 46 56 H 52" stroke="#e3121b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
 
@@ -376,7 +422,7 @@
             updateSlidePosition();
         }
 
-        // --- GESTOS DE TOUCH & ARRASTAR (SWIPE) ---
+        // --- NAVEGAÇÃO POR SWIPE (TOUCH / MOUSE) ---
         swipeArea.addEventListener('touchstart', touchStart);
         swipeArea.addEventListener('touchend', touchEnd);
 
