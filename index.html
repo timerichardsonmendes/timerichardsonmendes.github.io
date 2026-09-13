@@ -2,308 +2,251 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Richardson Mendes 15800 - Materiais de Campanha</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikolas Ferreira - Deputado Federal</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Yellowtail&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Cole o link da foto de fundo aqui */
-            --bg-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80');
+            --amarelo: #f5d425;
+            --azul: #2c599d;
+            --verde-escuro: #115324;
+            --branco: #ffffff;
+            --fundo-claro: #f8f9fa;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        html, body {
-            width: 100%;
-            height: 100%;
-            min-height: -webkit-fill-available;
-            overflow: hidden;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
-            background-color: #1a2a3a;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
-            background-image: var(--bg-image);
-            background-size: cover;
-            background-position: center;
+            background-color: var(--fundo-claro);
+            color: var(--verde-escuro);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            min-height: 100vh;
+        }
+
+        /* Header / Hero */
+        .hero {
+            background-color: var(--amarelo);
+            width: 100%;
+            padding: 60px 20px 40px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .logo-name {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .slogan {
+            font-family: 'Yellowtail', cursive;
+            font-size: 2.8rem;
+            color: var(--verde-escuro);
+            margin-top: 10px;
         }
 
         /* Container Principal */
-        .app-container {
+        .container {
             width: 100%;
-            max-width: 420px;
-            height: 100%;
-            height: -webkit-fill-available;
+            max-width: 800px;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding: calc(env(safe-area-inset-top) + 15px) 20px calc(env(safe-area-inset-bottom) + 10px) 20px;
-            touch-action: pan-y;
-            will-change: transform;
-            position: relative;
-            z-index: 10;
+            gap: 40px;
         }
 
-        /* Cabeçalho e Placeholders dos Logos */
-        .header {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
+        /* Botões de Navegação */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
         }
 
-        .logo-box {
-            background: #0088ff;
-            color: #fff;
-            padding: 10px 16px;
-            border-radius: 12px;
-            font-weight: 900;
-            font-size: 14px;
-            text-align: center;
-            border: 2px solid #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        .logo-main {
-            background: #003399;
-            display: flex;
-            flex-direction: column;
-            font-size: 16px;
-        }
-
-        .logo-main small {
-            font-size: 11px;
-            font-weight: normal;
-        }
-
-        .section-title {
-            color: #0b3c5d;
-            font-size: 12px;
-            font-weight: 900;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.9);
-            margin-top: 4px;
-            text-align: center;
-        }
-
-        /* Lista de Botões */
-        .buttons-container {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        /* Estilo Liquid Glass */
-        .glass-button {
-            position: relative;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            height: 58px;
-            padding: 0 16px;
-            border-radius: 35px;
+        .nav-btn {
+            background-color: var(--branco);
+            color: var(--verde-escuro);
             text-decoration: none;
-            color: #ffffff;
-            
-            background: rgba(0, 80, 200, 0.55);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
-            backdrop-filter: blur(16px) saturate(180%);
-            
-            border: 1.5px solid rgba(255, 255, 255, 0.65);
-            box-shadow: 
-                inset 0 2px 3px rgba(255, 255, 255, 0.6),
-                inset 0 -2px 5px rgba(0, 0, 0, 0.4),
-                0 6px 15px rgba(0, 0, 0, 0.25);
-                
-            overflow: hidden;
-            transition: transform 0.15s ease;
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
+            padding: 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            border: 2px solid var(--verde-escuro);
+            transition: all 0.3s ease;
+            box-shadow: 4px 4px 0px var(--verde-escuro);
         }
 
-        .glass-button:active {
-            transform: scale(0.96);
+        .nav-btn:hover {
+            background-color: var(--verde-escuro);
+            color: var(--amarelo);
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 0px var(--azul);
         }
 
-        /* Ícones em Círculo */
-        .icon-circle {
-            width: 38px;
-            height: 38px;
-            min-width: 38px;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            background: rgba(255, 255, 255, 0.2);
+        /* Redes Sociais */
+        .social-section {
+            background-color: var(--azul);
+            border-radius: 20px;
+            padding: 30px;
+            color: var(--branco);
+            text-align: center;
+        }
+
+        .social-section h2 {
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .social-link {
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.1);
+            color: var(--branco);
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
         }
 
-        .icon-circle svg {
-            width: 20px;
-            height: 20px;
-            fill: #ffffff;
+        .social-link:hover {
+            background: var(--amarelo);
+            color: var(--azul);
+            transform: scale(1.05);
         }
 
-        .divider {
-            width: 1px;
-            height: 24px;
-            background: rgba(255, 255, 255, 0.4);
-            margin: 0 12px;
+        .social-link i {
+            font-size: 1.5rem;
         }
 
-        .button-text {
-            flex-grow: 1;
-            font-size: 13px;
-            font-weight: 800;
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .chevron {
-            font-size: 16px;
-            font-weight: 300;
-        }
-
-        /* Home Indicator estilo iPhone */
-        .footer {
+        /* Footer */
+        footer {
             width: 100%;
-            display: flex;
-            justify-content: center;
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: auto;
+            font-size: 0.8rem;
         }
 
-        .home-indicator {
-            width: 130px;
-            height: 5px;
-            background-color: rgba(255, 255, 255, 0.85);
-            border-radius: 3px;
+        .footer-links {
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: var(--amarelo);
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 600;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
-    
-    <div class="app-container" id="draggableContainer">
+
+    <header class="hero">
+        <div class="logo-title">DEPUTADO FEDERAL</div>
+        <div class="logo-name">NIKOLAS<br>FERREIRA</div>
+        <h1 class="slogan">A Esperança Somos Nós!</h1>
+    </header>
+
+    <main class="container">
         
-        <!-- Cabeçalho -->
-        <header class="header">
-            <div class="logo-box">
-                <span>#TOCOM BRUNA PESSOA 15800</span>
+        <nav class="nav-grid">
+            <a href="#" class="nav-btn">Emendas</a>
+            <a href="#" class="nav-btn">Projetos de Lei</a>
+            <a href="#" class="nav-btn">Candidatos</a>
+            <a href="#" class="nav-btn">Blog</a>
+            <a href="#" class="nav-btn">Sobre Mim</a>
+        </nav>
+
+        <section class="social-section">
+            <h2>Redes Sociais</h2>
+            <div class="social-grid">
+                <a href="#" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                    <span>nikolasferreiradm</span>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-youtube"></i>
+                    <span>Nikolas Ferreira</span>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <span>nikolas_dm</span>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-telegram-plane"></i>
+                    <span>Nikolas Ferreira</span>
+                </a>
             </div>
-            
-            <div class="logo-box logo-main">
-                <span>RICHARDSON MENDES</span>
-                <small>Amigo do Povo!</small>
-            </div>
+        </section>
 
-            <h2 class="section-title">MATERIAIS OFICIAIS DA CAMPANHA</h2>
-        </header>
+    </main>
 
-        <!-- Lista de Botões -->
-        <main class="buttons-container">
-            
-            <a href="#" class="glass-button">
-                <div class="icon-circle">
-                    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                </div>
-                <div class="divider"></div>
-                <span class="button-text">MEU CANDIDATOS</span>
-                <span class="chevron">&gt;</span>
-            </a>
+    <footer>
+        <p>DEPUTADO NIKOLAS FERREIRA © TODOS OS DIREITOS RESERVADOS</p>
+        <div class="footer-links">
+            <a href="#">POLÍTICA DE PRIVACIDADE</a> | 
+            <a href="#">TERMOS DE USO</a>
+        </div>
+    </footer>
 
-            <a href="#" class="glass-button">
-                <div class="icon-circle">
-                    <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-                </div>
-                <div class="divider"></div>
-                <span class="button-text">GRÁFICA</span>
-                <span class="chevron">&gt;</span>
-            </a>
+    <a href="#" class="whatsapp-float" aria-label="Contato via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-            <a href="#" class="glass-button">
-                <div class="icon-circle">
-                    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-                </div>
-                <div class="divider"></div>
-                <span class="button-text">MÚSICAS DA CAMPANHA</span>
-                <span class="chevron">&gt;</span>
-            </a>
-
-            <a href="#" class="glass-button">
-                <div class="icon-circle">
-                    <svg viewBox="0 0 24 24"><path d="M4 6H2v12h2V6zm14 0h-2v12h2V6zM17 6H7v12h10V6zm-2 6l-5 3.5v-7l5 3.5z"/></svg>
-                </div>
-                <div class="divider"></div>
-                <span class="button-text">VÍDEOS DA CAMPANHA</span>
-                <span class="chevron">&gt;</span>
-            </a>
-
-        </main>
-
-        <!-- Home Indicator -->
-        <footer class="footer">
-            <div class="home-indicator"></div>
-        </footer>
-
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('draggableContainer');
-            let isDragging = false;
-            let startY = 0;
-            const resistance = 0.35;
-
-            const getClientY = (e) => e.touches ? e.touches[0].clientY : e.clientY;
-
-            const onStart = (e) => {
-                if (e.target.closest('.glass-button')) return;
-                isDragging = true;
-                startY = getClientY(e);
-                container.style.transition = 'none';
-            };
-
-            const onMove = (e) => {
-                if (!isDragging) return;
-                const currentY = getClientY(e);
-                const deltaY = currentY - startY;
-                container.style.transform = `translate3d(0, ${deltaY * resistance}px, 0)`;
-            };
-
-            const onEnd = () => {
-                if (!isDragging) return;
-                isDragging = false;
-                container.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-                container.style.transform = 'translate3d(0, 0, 0)';
-            };
-
-            container.addEventListener('pointerdown', onStart);
-            window.addEventListener('pointermove', onMove);
-            window.addEventListener('pointerup', onEnd);
-            window.addEventListener('pointercancel', onEnd);
-
-            container.addEventListener('touchstart', onStart, { passive: true });
-            window.addEventListener('touchmove', onMove, { passive: true });
-            window.addEventListener('touchend', onEnd);
-        });
-    </script>
 </body>
 </html>
