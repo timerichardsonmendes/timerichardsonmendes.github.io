@@ -47,7 +47,7 @@
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
 
-        /* Botão de voltar flutuante (discreto no topo esquerdo) */
+        /* Botão de voltar flutuante (topo esquerdo) */
         .back-btn {
             position: absolute;
             top: 16px;
@@ -79,7 +79,7 @@
             top: 0;
             bottom: 0;
             left: 0;
-            width: 25%;
+            width: 22%;
             background-color: var(--purple-bg);
             z-index: 1;
         }
@@ -89,31 +89,31 @@
             position: absolute;
             top: 0;
             bottom: 0;
-            left: 25%;
-            width: 5%;
+            left: 22%;
+            width: 4%;
             background-color: var(--pink-stripe);
             z-index: 1;
         }
 
-        /* Foto da Bruna (FOTOBRUNAPESSOA.png) */
+        /* Foto da Bruna Ajustada */
         .photo-bruna {
             position: absolute;
             bottom: 0;
-            left: -15px;
-            width: 72%;
-            max-height: 75vh;
+            left: -5px;
+            width: 53%;
+            max-height: 70vh;
             object-fit: contain;
             object-position: bottom left;
-            z-index: 5;
+            z-index: 2;
             pointer-events: none;
         }
 
-        /* Bloco de Textos no Lado Direito */
+        /* Bloco de Textos no Lado Direito (Sem invadir a foto) */
         .right-content {
             position: absolute;
-            top: 15%;
-            right: 5%;
-            width: 62%;
+            top: 13%;
+            left: 45%;
+            right: 12px;
             z-index: 10;
             display: flex;
             flex-direction: column;
@@ -122,16 +122,16 @@
 
         /* Texto da Bio */
         .bio-list {
-            font-size: 0.88rem;
-            line-height: 1.45;
+            font-size: 0.78rem;
+            line-height: 1.38;
             color: var(--text-dark);
             font-weight: 500;
-            margin-bottom: 20px;
+            margin-bottom: 14px;
         }
 
         /* Nome Bruna Pessoa */
         .candidate-name {
-            font-size: 1.55rem;
+            font-size: 1.35rem;
             font-weight: 900;
             color: var(--pink-title);
             line-height: 1.1;
@@ -140,27 +140,27 @@
 
         /* Número 15800 */
         .candidate-number {
-            font-size: 3.6rem;
+            font-size: 3.1rem;
             font-weight: 900;
             color: var(--purple-number);
             line-height: 0.95;
             letter-spacing: -1px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
-        /* Pill com nome do Instagram */
+        /* Tag do Instagram */
         .insta-pill {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            background-color: #e5e5e5;
-            padding: 6px 14px;
+            gap: 5px;
+            background-color: #e8e8e8;
+            padding: 5px 12px;
             border-radius: 20px;
             text-decoration: none;
             color: #333333;
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             font-weight: 700;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
             transition: transform 0.2s, background-color 0.2s;
         }
 
@@ -171,13 +171,13 @@
 
         .verified-icon {
             color: #1da1f2;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
-        /* Botão do Ícone da Mãozinha */
+        /* Botão / Ícone da Mãozinha */
         .click-icon-link {
             align-self: flex-end;
-            margin-right: 20px;
+            margin-right: 10px;
             text-decoration: none;
             display: block;
             transition: transform 0.2s;
@@ -230,14 +230,11 @@
                 <i class="fa-solid fa-circle-check verified-icon"></i>
             </a>
 
-            <!-- ÍCONE DE CLIQUE / INSTAGRAM -->
+            <!-- ÍCONE DA MÃOZINHA -->
             <a href="https://www.instagram.com/brunapessoama/" target="_blank" class="click-icon-link" title="Acessar Instagram">
-                <svg width="75" height="75" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Balão de Direção com Seta -->
+                <svg width="65" height="65" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="48" y="10" width="44" height="24" rx="12" stroke="#e3127d" stroke-width="5" fill="none"/>
                     <path d="M62 22H78M72 17L78 22L72 27" stroke="#e3127d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                    
-                    <!-- Mãozinha Apontando -->
                     <path d="M40 88V52C40 47 44 43 49 43C54 43 58 47 58 52V28C58 23 65 23 65 28V38" stroke="#e3127d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M40 60C34 60 28 65 28 72C28 80 35 88 42 88" stroke="#e3127d" stroke-width="5" stroke-linecap="round"/>
                     <path d="M65 42C71 42 75 46 75 52V64C75 76 66 86 52 88" stroke="#e3127d" stroke-width="5" stroke-linecap="round"/>
