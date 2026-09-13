@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>#RICHARDSON MENDES - Materiais de Campanha</title>
+    <title>Richardson Mendes - Materiais de Campanha</title>
     <!-- Font Awesome para os ícones -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts para a tipografia -->
@@ -12,6 +12,7 @@
     <style>
         :root {
             --brand-yellow: #fcf003;
+            --brand-blue: #2c599d; /* Tom de azul original recuperado */
             --text-dark: #111111;
             --text-light: #ffffff;
             --nav-gray: #f5f5f5;
@@ -35,7 +36,7 @@
         /* Container que simula a tela do celular */
         .mobile-container {
             width: 100%;
-            max-width: 414px; /* Tamanho padrão de tela mobile grande */
+            max-width: 414px;
             height: 100vh;
             max-height: 896px;
             background-color: #fff;
@@ -52,25 +53,30 @@
             height: 70px;
             background-color: #fff;
             z-index: 10;
+            align-items: center;
         }
 
         .logo {
             flex: 1;
             display: flex;
             align-items: center;
-            padding-left: 20px;
-            font-size: 15px; /* Reduzido para caber o nome completo */
+            padding-left: 15px;
+            padding-right: 5px;
+            font-size: 13px; /* Reduzido para encaixar perfeitamente */
             font-weight: 900;
             color: var(--text-dark);
-            letter-spacing: 0.5px;
+            letter-spacing: 0px;
+            line-height: 1.2;
+            word-break: break-word;
         }
 
         .header-actions {
             display: flex;
+            flex-shrink: 0;
         }
 
         .user-btn {
-            width: 70px;
+            width: 60px;
             height: 70px;
             background-color: var(--nav-gray);
             display: flex;
@@ -81,13 +87,13 @@
         }
 
         .user-btn i {
-            font-size: 24px;
+            font-size: 22px;
             color: #555;
             font-weight: 300;
         }
 
         .menu-btn {
-            width: 70px;
+            width: 60px;
             height: 70px;
             background-color: var(--brand-yellow);
             display: flex;
@@ -98,7 +104,7 @@
         }
 
         .menu-btn i {
-            font-size: 28px;
+            font-size: 26px;
             color: var(--text-dark);
         }
 
@@ -106,7 +112,6 @@
         .hero {
             flex: 1;
             position: relative;
-            /* Imagem de fundo */
             background-image: url('https://images.unsplash.com/photo-1548678967-f1aca5e9ff0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
             background-size: cover;
             background-position: center;
@@ -116,7 +121,6 @@
             padding: 30px 25px;
         }
 
-        /* Gradiente escuro sobre a imagem para dar leitura ao texto */
         .hero::before {
             content: '';
             position: absolute;
@@ -133,7 +137,7 @@
 
         .hero-content h1 {
             color: var(--brand-yellow);
-            font-size: 26px; /* Reduzido para caber a hashtag */
+            font-size: 26px;
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 8px;
@@ -200,15 +204,16 @@
         }
 
         .nav-icons a {
-            color: #333;
-            font-size: 26px;
+            color: #ffffff; /* Ícones em Branco */
+            font-size: 24px;
             text-decoration: none;
-            transition: transform 0.2s;
+            transition: transform 0.2s, color 0.2s;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3); /* Leve sombra para destacar no amarelo */
         }
         
         .nav-icons a:hover {
             transform: scale(1.1);
-            color: #000;
+            color: var(--text-dark);
         }
 
         /* Pontinhos inferiores do menu */
@@ -228,7 +233,6 @@
             background-color: #000;
         }
 
-        /* Ajustes responsivos para telas que não sejam mobile */
         @media (max-width: 414px) {
             .mobile-container {
                 height: 100vh;
