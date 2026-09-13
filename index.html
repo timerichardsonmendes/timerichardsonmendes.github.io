@@ -45,32 +45,26 @@
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
 
-        /* ----- ANIMAÇÕES ----- */
+        /* ----- ANIMAÇÕES BÁSICAS ----- */
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes shine {
             0% { background-position: -200% 0; }
             100% { background-position: 200% 0; }
+        }
+        
+        /* Animação do Reflexo ao passar o mouse/dedo */
+        @keyframes passLight {
+            0% { left: -100%; }
+            100% { left: 200%; }
         }
 
         /* Seção Superior Branca */
@@ -81,28 +75,63 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             animation: fadeInDown 0.8s ease-out;
         }
 
-        /* Selo principal com a foto */
-        .main-badge-img {
+        /* Envelopes das imagens para o efeito de reflexo */
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        /* Configurações específicas de tamanho */
+        .main-wrapper {
             width: 85%;
             max-width: 270px;
+            animation: fadeInDown 0.9s ease-out;
+        }
+        
+        .logo-wrapper {
+            width: 75%;
+            max-width: 230px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        /* A luz que vai passar (brilho branco) */
+        .img-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+            transform: skewX(-25deg);
+        }
+
+        /* Disparo do efeito de luz (Hover no PC, Active no Celular) */
+        .img-wrapper:hover::after, .img-wrapper:active::after {
+            animation: passLight 0.7s ease-out forwards;
+        }
+
+        /* Imagens base */
+        .main-badge-img, .logo-richardson-img {
+            width: 100%;
             height: auto;
             object-fit: contain;
-            animation: fadeInDown 0.9s ease-out;
+            transition: transform 0.2s ease-out;
+        }
+
+        .main-badge-img {
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
         }
 
-        /* Logomarca Richardson Mendes */
-        .logo-richardson-img {
-            width: 75%;
-            max-width: 230px;
-            height: auto;
-            object-fit: contain;
-            animation: fadeInDown 1s ease-out;
-            margin-top: 5px;
+        /* Leve zoom ao tocar nas imagens */
+        .img-wrapper:hover .main-badge-img, .img-wrapper:active .main-badge-img,
+        .img-wrapper:hover .logo-richardson-img, .img-wrapper:active .logo-richardson-img {
+            transform: scale(1.03);
         }
 
         .section-title {
@@ -154,7 +183,6 @@
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        /* Efeito de Reflexo */
         .nav-card::after {
             content: '';
             position: absolute;
@@ -267,11 +295,15 @@
         <!-- SEÇÃO SUPERIOR -->
         <div class="top-section">
             
-            <!-- 1. Selo principal com a foto -->
-            <img src="TIMERICHARDSONMENDES.png" alt="Time Richardson Mendes" class="main-badge-img">
+            <!-- 1. Selo principal com o container do efeito -->
+            <div class="img-wrapper main-wrapper">
+                <img src="TIMERICHARDSONMENDES.png" alt="Time Richardson Mendes" class="main-badge-img">
+            </div>
             
-            <!-- 2. Logomarca Richardson Mendes -->
-            <img src="LOGORICHARDSONMENDES.png" alt="Richardson Mendes" class="logo-richardson-img">
+            <!-- 2. Logomarca Richardson Mendes com o container do efeito -->
+            <div class="img-wrapper logo-wrapper">
+                <img src="LOGORICHARDSONMENDES.png" alt="Richardson Mendes" class="logo-richardson-img">
+            </div>
 
             <div class="section-title">MATERIAIS OFICIAIS DA CAMPANHA</div>
             
