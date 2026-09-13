@@ -174,7 +174,7 @@
             font-size: 0.78rem;
             font-weight: 700;
             margin-left: 35px;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
             transition: transform 0.2s, background-color 0.2s;
         }
 
@@ -188,7 +188,7 @@
             font-size: 0.82rem;
         }
 
-        /* ÍCONE ARRASTE PRO LADO COM ANIMAÇÃO */
+        /* ÍCONE NOVO DE ARRASTE PRO LADO COM ANIMAÇÃO */
         .swipe-icon-btn {
             align-self: flex-end;
             margin-right: 10px;
@@ -248,6 +248,7 @@
             border-radius: 50%;
             background-color: #cccccc;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .dot.active {
@@ -298,17 +299,20 @@
                         <i class="fa-solid fa-circle-check verified-icon"></i>
                     </a>
 
-                    <!-- ÍCONE DA MÃOZINHA (CLIQUE OU ARRASTE) -->
+                    <!-- NOVO ÍCONE DA MÃOZINHA (LIMPO E PROPORCIONAL) -->
                     <button class="swipe-icon-btn" onclick="nextSlide()" title="Arraste para o lado">
-                        <svg width="78" height="78" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Pílula com Seta -->
-                            <rect x="42" y="10" width="50" height="26" rx="13" stroke="#e3127d" stroke-width="5" fill="none"/>
-                            <path d="M56 23H76M70 17L76 23L70 29" stroke="#e3127d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <svg width="70" height="70" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Pílula Superior -->
+                            <rect x="42" y="10" width="50" height="24" rx="12" stroke="#e3127d" stroke-width="5" fill="none" stroke-linecap="round"/>
                             
-                            <!-- Mãozinha com o dedo estendido -->
-                            <path d="M40 86V48C40 43 45 39 50 39C55 39 59 43 59 48V23C59 18 66 18 66 23V36" stroke="#e3127d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M40 58C34 58 28 63 28 70C28 78 35 86 42 86" stroke="#e3127d" stroke-width="5" stroke-linecap="round"/>
-                            <path d="M66 40C72 40 76 44 76 50V62C76 74 67 84 53 86" stroke="#e3127d" stroke-width="5" stroke-linecap="round"/>
+                            <!-- Seta dentro da Pílula -->
+                            <path d="M 56 22 L 76 22 M 70 16 L 76 22 L 70 28" stroke="#e3127d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                            
+                            <!-- Dedo Indicador Estendido -->
+                            <path d="M 52 50 V 28" stroke="#e3127d" stroke-width="5" stroke-linecap="round"/>
+                            
+                            <!-- Mão Dobrada e Palma da Mão -->
+                            <path d="M 52 48 C 52 42 64 42 64 48 V 56 M 64 50 C 64 45 74 45 74 50 V 62 C 74 76 64 86 50 86 C 36 86 30 76 30 68 C 30 60 38 56 46 56 H 52" stroke="#e3127d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
 
@@ -339,7 +343,7 @@
 
         </div>
 
-        <!-- INDICADORES DE PÁGINA (BOLINHAS) -->
+        <!-- INDICADORES DE PÁGINA -->
         <div class="dots-container">
             <div class="dot active" id="dot0" onclick="goToSlide(0)"></div>
             <div class="dot" id="dot1" onclick="goToSlide(1)"></div>
@@ -354,8 +358,6 @@
         const swipeArea = document.getElementById('swipeArea');
 
         let startX = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
         let isDragging = false;
 
         function updateSlidePosition() {
@@ -374,23 +376,16 @@
             updateSlidePosition();
         }
 
-        // --- SUPORTE A TOUCH & DRAG (SWIPE) ---
+        // --- GESTOS DE TOUCH & ARRASTAR (SWIPE) ---
         swipeArea.addEventListener('touchstart', touchStart);
         swipeArea.addEventListener('touchend', touchEnd);
-        swipeArea.addEventListener('touchmove', touchMove);
 
         swipeArea.addEventListener('mousedown', touchStart);
         swipeArea.addEventListener('mouseup', touchEnd);
-        swipeArea.addEventListener('mouseleave', touchEnd);
-        swipeArea.addEventListener('mousemove', touchMove);
 
         function touchStart(event) {
             isDragging = true;
             startX = getPositionX(event);
-        }
-
-        function touchMove(event) {
-            if (!isDragging) return;
         }
 
         function touchEnd(event) {
@@ -399,12 +394,9 @@
             const endX = getPositionX(event);
             const diffX = startX - endX;
 
-            // Se arrastou mais de 40px para a esquerda -> Próximo Card
             if (diffX > 40 && currentSlide < totalSlides - 1) {
                 currentSlide++;
-            } 
-            // Se arrastou mais de 40px para a direita -> Card Anterior
-            else if (diffX < -40 && currentSlide > 0) {
+            } else if (diffX < -40 && currentSlide > 0) {
                 currentSlide--;
             }
 
@@ -412,7 +404,7 @@
         }
 
         function getPositionX(event) {
-            return event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+            return event.type.includes('mouse') ? event.clientX : event.changedTouches[0].clientX;
         }
     </script>
 
