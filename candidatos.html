@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bruna Pessoa 15800 - Meus Candidatos</title>
+    <title>Meus Candidatos - Bruna Pessoa</title>
     <!-- Font Awesome para ícones -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --purple-dark: #4b0082;
-            --purple-main: #6a0ded;
-            --purple-number: #5e17eb;
-            --pink-name: #e11d74;
-            --text-gray: #444444;
+            --brand-blue: #0d5cbe;
+            --brand-cyan: #52c4db;
+            --brand-yellow: #fcd116;
+            --text-dark: #111111;
         }
 
         * {
@@ -26,19 +25,19 @@
         }
 
         body {
-            background-color: #1a1a1a;
+            background-color: #1e1e1e;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
 
-        /* Moldura de Celular */
+        /* Moldura estilo Celular */
         .mobile-container {
             width: 100%;
             max-width: 420px;
             min-height: 100vh;
-            background-color: #f4f4f9;
+            background-color: #f2f4f8;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -46,15 +45,15 @@
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
 
-        /* Topo / Cabeçalho */
+        /* Cabeçalho */
         .top-header {
-            background: linear-gradient(135deg, #6a0ded, #4b0082);
+            background-color: var(--brand-blue);
             padding: 16px 20px;
             display: flex;
             align-items: center;
             gap: 15px;
             color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
             z-index: 10;
         }
 
@@ -69,162 +68,74 @@
             height: 36px;
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.2);
-            transition: all 0.2s ease;
+            transition: background-color 0.2s;
         }
 
         .back-button:hover, .back-button:active {
-            background-color: rgba(255, 255, 255, 0.4);
-            transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 0.35);
         }
 
         .header-title {
             font-size: 1rem;
             font-weight: 800;
-            letter-spacing: 0.5px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* Área Principal do Card */
-        .card-wrapper {
+        /* Área do Conteúdo */
+        .content-area {
             flex: 1;
-            padding: 15px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
         }
 
-        /* Card Visual Identico ao Anexo */
-        .candidate-card-art {
+        /* Card da Arte */
+        .card-container {
             width: 100%;
             background-color: #ffffff;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-            position: relative;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
             display: flex;
             flex-direction: column;
+            animation: fadeInUp 0.5s ease-out;
         }
 
-        /* CASO 1: Se o arquivo FOTOBRUNAPESSOA.png for a imagem completa da arte */
-        .full-art-img {
+        /* Exibição Completa da Imagem sem Distorção */
+        .art-image {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* CASO 2: Layout Montado em HTML caso seja a foto recortada */
-        .art-container {
-            position: relative;
-            width: 100%;
-            min-height: 500px;
-            background-color: #ffffff;
-            overflow: hidden;
-        }
-
-        /* Faixa Roxa Gradiente na Esquerda */
-        .left-stripe {
-            width: 30%;
-            height: 100%;
-            background: linear-gradient(180deg, #7a0099 0%, #4b0082 100%);
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-        }
-
-        /* Foto da Bruna */
-        .photo-bruna {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 65%;
-            height: auto;
-            max-height: 95%;
-            object-fit: contain;
-            object-position: bottom left;
-            z-index: 2;
-        }
-
-        /* Textos do Lado Direito */
-        .right-info {
-            position: absolute;
-            right: 15px;
-            top: 30px;
-            width: 55%;
-            z-index: 3;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .bio-text {
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            line-height: 1.35;
-            font-weight: 500;
-            margin-bottom: 12px;
-        }
-
-        .cand-name {
-            color: var(--pink-name);
-            font-size: 1.4rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 2px;
-        }
-
-        .cand-number {
-            color: var(--purple-number);
-            font-size: 3.3rem;
-            font-weight: 900;
-            line-height: 1;
-            letter-spacing: -1px;
-            margin-bottom: 15px;
-        }
-
-        /* Selinho do Instagram */
-        .insta-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background-color: #e5e7eb;
-            padding: 6px 14px;
-            border-radius: 20px;
-            text-decoration: none;
-            color: #333;
-            font-size: 0.78rem;
-            font-weight: 700;
-            transition: transform 0.2s;
-        }
-
-        .insta-pill:hover {
-            transform: scale(1.05);
-        }
-
-        .insta-pill i {
-            color: #1da1f2;
-            font-size: 0.85rem;
-        }
-
-        /* Botão para Acessar Instagram */
-        .action-link {
-            background: linear-gradient(135deg, #e11d74, #6a0ded);
+        /* Botão do Instagram acoplado na base do card */
+        .instagram-btn {
+            background: linear-gradient(135deg, #e11d74, #5e17eb);
             color: white;
             text-decoration: none;
-            padding: 14px;
-            text-align: center;
-            font-weight: 800;
-            font-size: 0.95rem;
+            padding: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-weight: 800;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
         }
 
-        .action-link i {
-            font-size: 1.2rem;
+        .instagram-btn:hover, .instagram-btn:active {
+            opacity: 0.9;
+        }
+
+        .instagram-btn i {
+            font-size: 1.3rem;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -232,7 +143,7 @@
 
     <div class="mobile-container">
         
-        <!-- CABEÇALHO -->
+        <!-- CABEÇALHO COM BOTÃO VOLTAR -->
         <div class="top-header">
             <a href="index.html" class="back-button" title="Voltar">
                 <i class="fa-solid fa-arrow-left"></i>
@@ -240,49 +151,18 @@
             <div class="header-title">MEUS CANDIDATOS</div>
         </div>
 
-        <!-- CONTEÚDO DO CARD -->
-        <div class="card-wrapper">
+        <!-- CONTEÚDO -->
+        <div class="content-area">
             
-            <div class="candidate-card-art">
-                
-                <!-- LAYOUT ESTRUTURADO (Fiel ao Anexo) -->
-                <div class="art-container">
-                    
-                    <!-- Faixa Roxa -->
-                    <div class="left-stripe"></div>
-                    
-                    <!-- Imagem da Bruna Pessoa -->
-                    <img src="FOTOBRUNAPESSOA.png" alt="Bruna Pessoa" class="photo-bruna">
-                    
-                    <!-- Informações do lado direito -->
-                    <div class="right-info">
-                        <div class="bio-text">
-                            Oi, minha gente<br>
-                            Candidata a deputada<br>
-                            estadual do MA 15800<br>
-                            Filha de Deus<br>
-                            Mamãe do Luís Miguel<br>
-                            Advogada<br>
-                            Empreendedora
-                        </div>
+            <div class="card-container">
+                <!-- EXIBE A SUA ARTE ORIGINAL INTEIRA -->
+                <img src="FOTOBRUNAPESSOA.png" alt="Bruna Pessoa 15800" class="art-image">
 
-                        <div class="cand-name">Bruna Pessoa</div>
-                        <div class="cand-number">15800</div>
-
-                        <a href="https://www.instagram.com/brunapessoama/" target="_blank" class="insta-pill">
-                            <span>brunapessoama</span>
-                            <i class="fa-solid fa-circle-check"></i>
-                        </a>
-                    </div>
-
-                </div>
-
-                <!-- BOTÃO DE AÇÃO DIRETA PARA O INSTAGRAM -->
-                <a href="https://www.instagram.com/brunapessoama/" target="_blank" class="action-link">
+                <!-- BOTÃO DO INSTAGRAM -->
+                <a href="https://www.instagram.com/brunapessoama/" target="_blank" class="instagram-btn">
                     <i class="fa-brands fa-instagram"></i>
                     Acessar Instagram Oficial
                 </a>
-
             </div>
 
         </div>
