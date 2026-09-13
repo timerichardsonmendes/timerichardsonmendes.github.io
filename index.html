@@ -76,22 +76,22 @@
         /* Seção Superior Branca */
         .top-section {
             background-color: #ffffff;
-            padding: 30px 20px 20px 20px;
+            padding: 25px 20px 15px 20px;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             animation: fadeInDown 0.8s ease-out;
         }
 
-        .logo-box-1 {
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: var(--brand-blue);
-            text-transform: uppercase;
+        /* Estilo da Logomarca em Imagem */
+        .logo-img {
+            width: 85%;
+            max-width: 260px;
+            height: auto;
+            object-fit: contain;
             animation: fadeInDown 0.9s ease-out;
-            line-height: 1.2;
         }
 
         .logo-box-2 {
@@ -264,8 +264,11 @@
         
         <!-- SEÇÃO SUPERIOR -->
         <div class="top-section">
-            <div class="logo-box-1">TIME RICHARDSON MENDES</div>
+            <!-- Logomarca inserida via imagem (Nome exato do arquivo enviado) -->
+            <img src="TIMERICHARDSONMENDES.png" alt="Time Richardson Mendes" class="logo-img">
+            
             <div class="logo-box-2">RICHARDSON MENDES</div>
+
             <div class="section-title">MATERIAIS OFICIAIS DA CAMPANHA</div>
         </div>
 
@@ -303,7 +306,7 @@
                 </a>
             </div>
 
-            <!-- BOTÃO CANAL NO WHATSAPP COM O LINK CORRIGIDO -->
+            <!-- BOTÃO CANAL NO WHATSAPP -->
             <a href="https://wa.me/5599984573001" target="_blank" class="whatsapp-btn">
                 <i class="fa-brands fa-whatsapp"></i>
                 Canal no WhatsApp
